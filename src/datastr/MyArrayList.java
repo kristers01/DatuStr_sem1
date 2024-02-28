@@ -53,4 +53,31 @@ public class MyArrayList {
 		System.gc();
 		size = newSize;
 	}
+	
+	//TODO
+	//1.funkcijas dekleracija
+	public void add(int element) {
+	//2.parbaude isFull - tad izsauc resize
+		if (isFull()) resize();
+	//3. ieliek jauno elementu ka pedejo saraksta
+		list[counter] = element;
+	//4.palielina counter par 1
+		counter += 1;
+	}
+	
+	public void add(int element, int index) throws Exception {
+		if (index < 0 || index > counter) {
+			throw new Exception("Incorrect index");
+		}
+		if(isFull()) resize();
+		if(index == counter) add(element);
+		else {
+			for(int i = counter; i > index; i--) {
+				list[i] = list[i-1];
+			}
+			list[index] = element;
+			counter += 1;
+			
+		}
+	}
 }
