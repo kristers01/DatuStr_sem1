@@ -1,5 +1,7 @@
 package datastr;
 
+import java.util.ArrayList;
+
 public class MyArrayList {
 
 	private int[] list;
@@ -95,4 +97,42 @@ public class MyArrayList {
 	//4. coubnter jasamazina par 1
 		counter--;
 	}
+	
+	public int getElement(int index) throws Exception {
+		if (isEmpty()) throw new Exception("List empty");
+		if (index < 0 || index >= counter) {
+			throw new Exception("Incorrect index");
+		} else {
+			return list[index];
+		}
+	}
+	
+	public ArrayList<Integer> search (int element) throws Exception {
+		if (isEmpty()) throw new Exception("List empty");
+		ArrayList<Integer> indexes = new ArrayList<Integer>();
+		for (int i = 0; i < counter ; i++) {
+			if (list[i] == element) {
+				indexes.add(i);
+			}
+		}
+		if(indexes.size() == 0) throw new Exception("Element not found");
+		return indexes;
+	}
+	public int[] getNeighbour(int element) throws Exception {
+		ArrayList indexes = search(element);
+		
+		int neighboursSize = indexes.size();
+		
+		if ((Integer)indexes.get(indexes.size()-1) == (counter-1))
+			neighboursSize--;
+		
+		int[] neighbours = new int[neighboursSize];
+		for(int i = 0; i < neighboursSize; i++) {
+			int indexFromSearchTemp = (int)indexes.get(i);
+			int indexNeighbourTemp = indexFromSearchTemp+1;
+			neighbours[i] = list[indexNeighbourTemp];
+		}
+		return neighbours;
+	}
+	
 }
