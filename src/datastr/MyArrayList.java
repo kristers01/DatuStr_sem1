@@ -148,4 +148,18 @@ public class MyArrayList {
 		list = new int[size];
 		System.gc();
 	}
+	public void sort() throws Exception {
+		if(isEmpty()) throw new Exception("Array is Empty");
+		for(int i = 0; i < counter; i++) {
+			for(int j = 0; j < counter; j++) {
+				swap(i, j);
+			}
+		}
+	}
+	
+	private void swap(int index1, int index2) {
+		int temp = list[index1];
+		list[index1] = list[index2];
+		list[index2] = temp;
+	}
 }
