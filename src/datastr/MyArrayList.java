@@ -107,9 +107,9 @@ public class MyArrayList {
 		}
 	}
 	
-	public ArrayList<Integer> search (int element) throws Exception {
+	public ArrayList search (int element) throws Exception {
 		if (isEmpty()) throw new Exception("List empty");
-		ArrayList<Integer> indexes = new ArrayList<Integer>();
+		ArrayList indexes = new ArrayList();
 		for (int i = 0; i < counter ; i++) {
 			if (list[i] == element) {
 				indexes.add(i);
@@ -135,4 +135,17 @@ public class MyArrayList {
 		return neighbours;
 	}
 	
+	public void print() {
+		for (int i = 0; i < counter; i++) {
+			System.out.println(list[i] + " ");
+		}
+		System.out.println();
+	}
+	
+	public void makeEmpty() {
+		counter = 0;
+		size = LIST_SIZE;
+		list = new int[size];
+		System.gc();
+	}
 }
