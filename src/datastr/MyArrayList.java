@@ -80,4 +80,19 @@ public class MyArrayList {
 			
 		}
 	}
+	//TODO
+	//0. definet prikolu
+	public void delete(int index) throws Exception {	
+	//1. parbaudes
+		if (index < 0 || index >= counter) {
+			throw new Exception("Incorrect index");
+		}
+		if(isEmpty()) throw new Exception("List empty");
+	//3. veikt kopesanu uz kreiso pusi lidz indeksa elementam
+		for (int i = index; i < counter -1; i++) {
+			list[i] = list[i+1];
+		}
+	//4. coubnter jasamazina par 1
+		counter--;
+	}
 }
